@@ -7,12 +7,21 @@ alias emacs='emacs24'
 alias update='sudo apt-get update && sudo apt-get upgrade'
 
 # ls with octet? come on!
-alias ls.='ls -d .* --color=auto'
-alias ls='ls -l --block-size=M --color=auto'
-
-
+#alias ls.='ls -d .* --color=auto'
+#alias ls='ls -l --block-size=M --color=auto'
+alias ls='exa -l'
+#alias ls -lk='exa -l'
 # Show open ports
 alias ports='netstat -tulanp'
 
 # ex: moresound 200%
 alias moresound='pactl set-sink-volume 1'
+
+# ip
+alias myip='curl http://ifconfig.me/ip'
+
+# please
+alias s='sudo $(history -p !!)'
+
+# ssh teralab
+alias ssh_teralab='ssh adrien@ws35.tl.teralab-datascience.fr -p 2201'
