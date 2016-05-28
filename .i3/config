@@ -9,6 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+
 # Perso
 exec --no-startup-id nm-applet
 #exec --no-startup-id urxvtd -q -o -f
@@ -50,7 +51,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+#font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -58,6 +59,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec urxvtc
+
+# Bug trackpad solver !
+bindsym $mod+Shift+m exec ~/.i3/mouse_trackpad_bug
 
 # kill focused window
 bindsym $mod+q kill
@@ -85,7 +89,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+#bindsym $mod+Shift+m move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -114,8 +118,11 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
+# open atom
+bindsym $mod+a exec atom /home/dud/
+bindsym $mod+b exec atom /home/dud/bnf-svn/
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -180,33 +187,32 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
-  status_command i3status -c ~/.i3/i3status.conf
+  #status_command i3status
+  status_command py3status -i ~/.i3/ -c ~/.i3/i3status.conf
+#  status_command i3blocks -c ~/.i3/i3blocks.conf
   position top
   colors {
-    separator #dc322f
+    separator #586e75
     background #002b36
-    statusline #268bd2
-    focused_workspace #fdf6e3 #859900 #fdf6e3
-    active_workspace #fdf6e3 #6c71c4 #fdf6e3
-    inactive_workspace #586e75 #93a1a1 #002b36
-    urgent_workspace #d33682 #d33682 #fdf6e3
+    statusline #aea79f
+    focused_workspace #586e75 #586e75 #ffffff
+    active_workspace #073642 #073642 #ffffff
+    inactive_workspace #002b36 #002b36 #aea79f
+    urgent_workspace #77216f #77216f #ffffff
   }
 }
-
 
 
 set $FOCUS #989898
 set $UNFOCUS #3c3b37
 
 # Layout colors 	    bord 	bg 		text    indicator (split)
-#
-#
-#
-#
 #client.background 		$UNFOCUS
 
-client.focused #859900 #859900 #fdf6e3 #859900
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+# Remove window titlebars
+for_window [class="^.*"] border pixel 0
+
+client.focused #586e75 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.unfocused #002b36 #002b36 #586e75 #002b36
+client.urgent #dc322f #dc322f #fdf6e3 #dc322f
