@@ -24,4 +24,5 @@ alias myip='curl http://ifconfig.me/ip'
 alias s='sudo $(history -p !!)'
 
 # ssh teralab
-alias ssh_teralab='ssh adrien@ws35.tl.teralab-datascience.fr -p 2201'
+alias ssh_teralab='ssh -X adrien@ws35.tl.teralab-datascience.fr -p 2201'
+alias upsvn='svn commit -m "v" /home/dud/bnf-svn/; ssh_teralab "svn update /home/adrien/bnf-svn/"'
