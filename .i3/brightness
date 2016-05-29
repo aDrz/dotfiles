@@ -1,0 +1,12 @@
+#!/bin/bash
+# I only use two brightness setup max-brightlight/min-brightlight
+bright=`xbacklight -get`
+threshold=10.0
+if [ ${bright%.*} -gt ${threshold%.*} ] 
+then
+	xbacklight -set 0 -steps 1
+else
+	echo $bright
+	xbacklight -set 100 -steps 1
+fi
+
